@@ -55,7 +55,6 @@ export function RegisterForm() {
       }
       toast("Success");
       router.push("/login");
-      
     } catch (error) {
       toast("Error");
     } finally {

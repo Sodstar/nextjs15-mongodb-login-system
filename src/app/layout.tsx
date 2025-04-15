@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <AuthProvider>
         <NavBar />
-          <div className="min-h-[calc(100vh-64px)]">
+          <div className="min-h-screen flex flex-col items-center justify-center p-4">
             {children}
           </div>
           <Toaster/>

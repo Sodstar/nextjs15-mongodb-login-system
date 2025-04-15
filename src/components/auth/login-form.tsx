@@ -61,7 +61,7 @@ export function LoginForm() {
       router.push("/dashboard");
       router.refresh();
     } catch (error) {
-        toast("Алдаа");
+      toast("Алдаа");
     } finally {
       setIsLoading(false);
     }
@@ -71,8 +71,7 @@ export function LoginForm() {
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
         <CardTitle className="text-2xl">Нэвтрэх</CardTitle>
-        <CardDescription>
-Та нэвтрэх мэдээллээ оруулна уу        </CardDescription>
+        <CardDescription>Та нэвтрэх мэдээллээ оруулна уу </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

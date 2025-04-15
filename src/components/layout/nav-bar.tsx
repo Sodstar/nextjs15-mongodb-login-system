@@ -48,6 +48,18 @@ export function NavBar() {
                   Профайл
                 </Link>
 
+
+                <Link
+                  href="/products"
+                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                    isActive("/products")
+                      ? "bg-gray-100 text-gray-900"
+                      : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Бараа
+                </Link>
+
                 {isAdmin && (
                   <Link
                     href="/admin/dashboard"
