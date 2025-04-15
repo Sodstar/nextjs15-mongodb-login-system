@@ -85,11 +85,11 @@ export function NavBar() {
               </Link>
             ) : (
               <div className="space-x-2">
-                <Link href="/login">
+                <a href="/login">
                   <Button variant="outline" size="sm">
                     Нэвтрэх
                   </Button>
-                </Link>
+                </a>
                 <Link href="/register">
                   <Button size="sm">Бүртгүүлэх</Button>
                 </Link>
