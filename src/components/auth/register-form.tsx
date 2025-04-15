@@ -38,7 +38,7 @@ export function RegisterForm() {
       name: "",
       email: "",
       password: "",
-      role: "user", // Default role
+      role: "user",
     },
   });
 
@@ -53,10 +53,9 @@ export function RegisterForm() {
 
         return;
       }
-
       toast("Success");
-
       router.push("/login");
+      
     } catch (error) {
       toast("Error");
     } finally {
