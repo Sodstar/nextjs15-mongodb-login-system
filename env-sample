@@ -1,0 +1,3 @@
+MONGODB_URI="url here"
+NEXTAUTH_SECRET="DokCVdWEbz7aH4PsYRw1MqGFkcC8OXst7plaxrUHUKw="
+NEXTAUTH_URL=http://localhost:3000
