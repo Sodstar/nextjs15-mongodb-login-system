@@ -12,11 +12,7 @@ interface ProductPageClientProps {
 
 function ProductPageClient({ product }: ProductPageClientProps) {
   const [isLoading, setIsLoading] = useState(true);
-
-
-  const handleAddToCart = async () => {
-
-  };
+  const handleAddToCart = async () => {};
 
   return (
     <div className="max-w-7xl container mx-auto p-6 gap-8 items-center flex flex-col">

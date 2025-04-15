@@ -1,19 +1,15 @@
-import React from 'react'
+import React from "react";
 import { notFound } from "next/navigation";
-import { getProductById } from '@/lib/actions/product-action';
-import ProductPageClient from './ProductPageClient';
+import { getProductById } from "@/lib/actions/product-action";
+import ProductPageClient from "./ProductPageClient";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: number };
-}) {
+export async function generateMetadata({ params }: { params: { id: number } }) {
   const product = await getProductById(params.id);
   if (!product) return;
 
   return {
     title: `${product.title ?? product._id}`,
-    description: product.description || '',
+    description: product.description || "",
     openGraph: {
       title: "OG: гарчиг",
       images: "",
@@ -22,19 +18,15 @@ export async function generateMetadata({
   };
 }
 async function productDetailPage({ params }: { params: { id: string } }) {
-   
-    const product = await getProductById(Number(params.id));
-    // const [product] = await Promise.all([
-    //   getProductById(params.id)
-    // ]);
+  const product = await getProductById(Number(params.id));
+  // const [product] = await Promise.all([
+  //   getProductById(params.id)
+  // ]);
 
-    const data = JSON.parse(JSON.stringify(product))
-    // const updatedProduct = { ...product, _id: product._id.toString() }
+  const data = JSON.parse(JSON.stringify(product));
+  // const updatedProduct = { ...product, _id: product._id.toString() }
 
-  return (
-    
-    <ProductPageClient product={data} />
-  )
+  return <ProductPageClient product={data} />;
 }
 
 export default productDetailPage;
