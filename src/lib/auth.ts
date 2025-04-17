@@ -3,6 +3,7 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
+import GithubProvider from "next-auth/providers/discord";
 import bcrypt from "bcryptjs";
 import { connectDB } from "./mongodb";
 import User, { UserRole } from "@/models/User";
@@ -54,7 +55,10 @@ export const authConfig: NextAuthOptions = {
       clientId: process.env.FACEBOOK_CLIENT_ID as string,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
     }),
-
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID  as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET  as string,
+    }),
   ],
   callbacks: {
     async jwt({ token, user, account }) {

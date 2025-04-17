@@ -122,6 +122,14 @@ export function LoginForm() {
         >
           <i className="ri-facebook-fill"></i> Facebook Login
         </Button>
+        <Button
+          type="submit"
+          className="w-full mt-4"
+          disabled={isLoading}
+          onClick={() => signIn("github")}
+        >
+          <i className="ri-github-fill"></i> Github Login
+        </Button>
       </CardContent>
       <CardFooter className="flex justify-center">
         <p className="text-sm text-center">
