@@ -10,7 +10,7 @@ import { signOut } from "next-auth/react"
 export function NavBar() {
   const { data: session } = useSession();
   const pathname = usePathname();
-
+console.log(session)
   const isAdmin = session?.user?.role === "admin";
   const isActive = (path: string) => pathname === path;
 

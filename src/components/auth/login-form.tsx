@@ -130,6 +130,14 @@ export function LoginForm() {
         >
           <i className="ri-github-fill"></i> Github Login
         </Button>
+        <Button
+          type="submit"
+          className="w-full mt-4"
+          disabled={isLoading}
+          onClick={() => signIn("linkedin")}
+        >
+          <i className="ri-linkedin-fill"></i> Linkedin Login
+        </Button>
       </CardContent>
       <CardFooter className="flex justify-center">
         <p className="text-sm text-center">

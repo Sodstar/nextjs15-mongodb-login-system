@@ -3,7 +3,10 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
-import GithubProvider from "next-auth/providers/discord";
+import GithubProvider from "next-auth/providers/github";
+import LinkedinProvider from "next-auth/providers/linkedin";
+// Removed FigmaProvider as it does not exist
+
 import bcrypt from "bcryptjs";
 import { connectDB } from "./mongodb";
 import User, { UserRole } from "@/models/User";
@@ -58,6 +61,10 @@ export const authConfig: NextAuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID  as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET  as string,
+    }),
+    LinkedinProvider({
+      clientId: process.env.LINKEDIN_CLIENT_ID  as string,
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET  as string,
     }),
   ],
   callbacks: {
