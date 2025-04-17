@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react"
 
 export function NavBar() {
   const { data: session } = useSession();
@@ -78,8 +79,8 @@ export function NavBar() {
 
           <div className="flex items-center">
             {session ? (
-              <Link href="/api/auth/signout">
-                <Button variant="outline" size="sm">
+              <Link  href="#" onClick={() => signOut({ callbackUrl: '/' })} >
+                <Button variant="outline" size="sm" className="cursor-pointer">
                   Гарах
                 </Button>
               </Link>
