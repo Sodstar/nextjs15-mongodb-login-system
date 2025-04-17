@@ -16,6 +16,7 @@ import { IProduct } from "@/models/Product";
 import { ProductSkeleton } from "@/components/ProductSkeleton";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 // type Products = Awaited<ReturnType<typeof getCachedProducts>>;
 
 const page = () => {
@@ -23,7 +24,6 @@ const page = () => {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const searchParams = useSearchParams();
-
   const getFiltersFromURL = () => ({
     category: searchParams.get("category") || [],
     brand: searchParams.get("brand") || [],

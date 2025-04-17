@@ -80,8 +80,8 @@ export function NavBar() {
           <div className="flex items-center">
             {session ? (
               <Link  href="#" onClick={() => signOut({ callbackUrl: '/' })} >
-                <Button variant="outline" size="sm" className="cursor-pointer">
-                  Гарах
+                                <Button variant="outline" size="sm" className="cursor-pointer">
+                 {session?.user.image? (<><img src={session?.user.image} className="rounded-full w-5 mr-2"/></>):<div></div>} Гарах
                 </Button>
               </Link>
             ) : (

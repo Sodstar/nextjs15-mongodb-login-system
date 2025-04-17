@@ -21,6 +21,7 @@ import {
 import { loginSchema } from "@/lib/validation/auth";
 import Link from "next/link";
 import { toast } from "sonner";
+import "remixicon/fonts/remixicon.css";
 
 type FormData = z.infer<typeof loginSchema>;
 
@@ -105,6 +106,22 @@ export function LoginForm() {
             {isLoading ? "Logging in..." : "Login"}
           </Button>
         </form>
+        <Button
+          type="submit"
+          className="w-full mt-4"
+          disabled={isLoading}
+          onClick={() => signIn("google")}
+        >
+          <i className="ri-google-fill"></i> Google Login
+        </Button>
+        <Button
+          type="submit"
+          className="w-full mt-4"
+          disabled={isLoading}
+          onClick={() => signIn("facebook")}
+        >
+          <i className="ri-facebook-fill"></i> Facebook Login
+        </Button>
       </CardContent>
       <CardFooter className="flex justify-center">
         <p className="text-sm text-center">
