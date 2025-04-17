@@ -8,6 +8,7 @@ export type UserRole = 'user' | 'admin';
 interface IUser extends mongoose.Document {
   name: string;
   email: string;
+  phone: string;
   password: string;
   image?: string;
   role: UserRole;
@@ -27,6 +28,9 @@ const UserSchema = new mongoose.Schema<IUser>(
       type: String,
       required: [true, 'Please provide an email'],
       unique: true,
+    },
+    phone: {
+      type: String,
     },
     password: {
       type: String,

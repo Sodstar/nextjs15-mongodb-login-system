@@ -59,12 +59,12 @@ export const authConfig: NextAuthOptions = {
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
     }),
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID  as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET  as string,
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     }),
     LinkedinProvider({
-      clientId: process.env.LINKEDIN_CLIENT_ID  as string,
-      clientSecret: process.env.LINKEDIN_CLIENT_SECRET  as string,
+      clientId: process.env.LINKEDIN_CLIENT_ID as string,
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET as string,
     }),
   ],
   callbacks: {

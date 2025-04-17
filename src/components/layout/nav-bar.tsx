@@ -5,12 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
-import { signOut } from "next-auth/react"
+import { signOut } from "next-auth/react";
 
 export function NavBar() {
   const { data: session } = useSession();
   const pathname = usePathname();
-console.log(session)
+  console.log(session);
   const isAdmin = session?.user?.role === "admin";
   const isActive = (path: string) => pathname === path;
 
@@ -21,7 +21,7 @@ console.log(session)
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="text-xl font-bold">
-                Нэвтрэх систем
+                Нэвтрэх систем 
               </Link>
             </div>
 
@@ -48,7 +48,6 @@ console.log(session)
                 >
                   Профайл
                 </Link>
-
 
                 <Link
                   href="/products"
@@ -79,9 +78,19 @@ console.log(session)
 
           <div className="flex items-center">
             {session ? (
-              <Link  href="#" onClick={() => signOut({ callbackUrl: '/' })} >
-                                <Button variant="outline" size="sm" className="cursor-pointer">
-                 {session?.user.image? (<><img src={session?.user.image} className="rounded-full w-5 mr-2"/></>):<div></div>} Гарах
+              <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
+                <Button variant="outline" size="sm" className="cursor-pointer">
+                  {session?.user.image ? (
+                    <>
+                      <img
+                        src={session?.user.image}
+                        className="rounded-full w-5 mr-2"
+                      />
+                    </>
+                  ) : (
+                    <div></div>
+                  )}{" "}
+                  Гарах
                 </Button>
               </Link>
             ) : (

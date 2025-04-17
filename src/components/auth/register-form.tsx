@@ -37,6 +37,7 @@ export function RegisterForm() {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       password: "",
       role: "user",
     },
@@ -90,7 +91,18 @@ export function RegisterForm() {
               <p className="text-sm text-red-500">{errors.email.message}</p>
             )}
           </div>
-
+          <div className="space-y-2">
+            <Label htmlFor="email">Утасны дугаар</Label>
+            <Input
+              id="phone"
+              type="text"
+              placeholder="bataa@example.mn"
+              {...register("phone")}
+            />
+            {errors.phone && (
+              <p className="text-sm text-red-500">{errors.phone.message}</p>
+            )}
+          </div>
           <div className="space-y-2">
             <Label htmlFor="password">Нууц үг</Label>
             <Input
