@@ -85,7 +85,7 @@ export const getCachedProducts = unstable_cache(
   { revalidate: 3600, tags: ["products"] }
 );
 
-export async function getProductById(productId: Number) {
+export async function getProductById(productId: Types.ObjectId) {
   try {
     await connectDB();
     const product = await ProductModel.findById(productId);
@@ -176,6 +176,7 @@ export async function deleteProduct(productId: string) {
   }
 }
 export async function getCategoryCounts() {
+  await connectDB();
   const results = await ProductModel.aggregate([
     {
       $group: {

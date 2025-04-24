@@ -47,7 +47,7 @@ const page = () => {
         console.log(data);
         if (typeof data === "string") {
           setProducts(JSON.parse(data));
-          console.log(JSON.parse(data));
+
         } else {
           setProducts(data);
         }
@@ -64,9 +64,9 @@ const page = () => {
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8 items-center ">
-        {products.map((product) => (
+        {products.map((product, index) => (
           <Card
-            key={product._id}
+            key={index}
             className="border rounded-lg shadow-lg overflow-hidden"
           >
             <CardContent>

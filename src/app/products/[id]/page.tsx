@@ -1,10 +1,16 @@
-import React from "react";
+import React, { use } from "react";
 import { notFound } from "next/navigation";
 import { getProductById } from "@/lib/actions/product-action";
 import ProductPageClient from "./ProductPageClient";
+import { Types } from "mongoose";
 
-export async function generateMetadata({ params }: { params: { id: number } }) {
-  const product = await getProductById(params.id);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: Types.ObjectId }>;
+}) {
+  const { id } = await params;
+  const product = await getProductById(id);
   if (!product) return;
 
   return {
@@ -17,8 +23,14 @@ export async function generateMetadata({ params }: { params: { id: number } }) {
     },
   };
 }
-async function productDetailPage({ params }: { params: { id: string } }) {
-  const product = await getProductById(Number(params.id));
+async function productDetailPage({
+  params,
+}: {
+  params: Promise<{ id: Types.ObjectId }>;
+}) {
+  const { id } = await params;
+
+  const product = await getProductById(id);
   // const [product] = await Promise.all([
   //   getProductById(params.id)
   // ]);
