@@ -60,6 +60,28 @@ export function NavBar() {
                   Бараа
                 </Link>
 
+                <Link
+                  href="/home"
+                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                    isActive("/home")
+                      ? "bg-gray-100 text-gray-900"
+                      : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Жишээ хуудас 1
+                </Link>
+
+                <Link
+                  href="/categories"
+                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                    isActive("/categories")
+                      ? "bg-gray-100 text-gray-900"
+                      : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Жишээ хуудас 2
+                </Link>
+
                 {isAdmin && (
                   <Link
                     href="/admin/dashboard"

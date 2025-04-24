@@ -1,7 +1,7 @@
 "use server";
 
 import { connectDB } from "@/lib/mongodb";
-import ProductModel, {IProduct } from "@/models/Product";
+import ProductModel, { IProduct } from "@/models/Product";
 import { revalidatePath, unstable_cache } from "next/cache";
 import CategoryModel from "@/models/Category";
 import { Types } from "mongoose";
@@ -10,7 +10,7 @@ import BrandModel from "@/models/Brand";
 export async function getFilteredProducts(filters: any) {
   await connectDB();
 
-  const { category,brand, minPrice, maxPrice, orderBy } = filters;
+  const { category, brand, minPrice, maxPrice, orderBy } = filters;
   let query: any = {};
 
   // Debugging the received filters
@@ -82,7 +82,7 @@ export const getCachedProducts = unstable_cache(
     }
   },
   ["products"],
-  { revalidate: 3600, tags:["products"] }
+  { revalidate: 3600, tags: ["products"] }
 );
 
 export async function getProductById(productId: Number) {
@@ -173,5 +173,49 @@ export async function deleteProduct(productId: string) {
     return deletedProduct;
   } catch (error) {
     throw new Error("Failed to delete product");
+  }
+}
+export async function getCategoryCounts() {
+  const results = await ProductModel.aggregate([
+    {
+      $group: {
+        _id: "$category",
+        count: { $sum: 1 },
+      },
+    },
+    {
+      $lookup: {
+        from: "categories",
+        localField: "_id",
+        foreignField: "_id",
+        as: "categoryInfo",
+      },
+    },
+    {
+      $unwind: "$categoryInfo",
+    },
+    {
+      $project: {
+        _id: 1,
+        slug: "$categoryInfo.slug",
+        category: "$categoryInfo.name",
+        count: 1,
+      },
+    },
+  ]);
+
+  return results; // [{ category: "Jersey", count: 2 }, ...]
+}
+
+export async function getProductsWithCategory() {
+  try {
+    await connectDB();
+    const products = await ProductModel.find({})
+      .populate("category", "_id name slug")
+      .select("title price category");
+
+    return products;
+  } catch (error) {
+    throw new Error("Failed to fetch products with categories");
   }
 }

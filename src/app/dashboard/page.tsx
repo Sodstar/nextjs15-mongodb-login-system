@@ -4,10 +4,17 @@ import { authConfig } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {
+  getCategoryCounts,
+  getProductsWithCategory,
+} from "@/lib/actions/product-action";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authConfig);
-
+  const test = await getCategoryCounts();
+  const test2 = await getProductsWithCategory();
+  console.log(test);
+  console.log(test2);
   if (!session) {
     redirect("/login");
   }
