@@ -52,7 +52,7 @@ export function LoginForm() {
       });
 
       if (result?.error) {
-        toast("Нэвтрэх нэр эсвэл нууц үг буруу байна");
+        toast.info("Нэвтрэх нэр эсвэл нууц үг буруу байна");
         setIsLoading(false);
         return;
       }

@@ -1,14 +1,13 @@
 // src/lib/validations/auth.ts
 import { z } from "zod";
 
+
 export const registerSchema = z.object({
-  name: z.string().min(2, { message: "Доод тал нь 2 нэмдэгт байна" }),
-  email: z.string().email({ message: "Зөв цахим шуудан орууна уу" }),
+  name: z.string(),
+  email: z.string().email(),
   phone: z.string(),
-  password: z.string().min(6, {
-    message: "Зөв цахим шуудан орууна уу",
-  }),
-  role: z.enum(["user", "admin"]).default("user"),
+  password: z.string(),
+  role: z.enum(["user", "admin"]),
 });
 
 export const loginSchema = z.object({
