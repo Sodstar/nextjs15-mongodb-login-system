@@ -23,7 +23,6 @@ import { register as registerAction } from "@/lib/actions/auth-action";
 import { toast } from "sonner";
 
 type FormData = z.infer<typeof registerSchema>;
-
 export function RegisterForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -96,7 +95,7 @@ export function RegisterForm() {
             <Input
               id="phone"
               type="text"
-              placeholder="bataa@example.mn"
+              placeholder="123213223"
               {...register("phone")}
             />
             {errors.phone && (
