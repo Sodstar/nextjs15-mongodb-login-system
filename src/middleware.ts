@@ -24,7 +24,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
   
-  // Admin-only routes
+  // Check for admin-only routes
   if (isAdminRoute && userRole !== 'admin') {
     return NextResponse.redirect(new URL("/unauthorized", request.url));
   }
